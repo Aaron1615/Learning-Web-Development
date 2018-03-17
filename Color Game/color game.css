@@ -1,0 +1,70 @@
+body {
+	margin: 0;
+	background-color: #232323;
+	font-family: "Montserrat", "Avenir";
+
+}
+	.square {
+		width: 30%;
+		//30% of the container it is in.;
+		background: purple;
+		padding-bottom: 30%;
+		float: left;
+		// ensures each following element is placed to the lefft instead of bellow;
+		margin:1.66%;
+		//changes the margins on either side.;
+		border-radius: 15%;
+		transition: background 0.6s;
+
+	}
+	#container{
+		max-width: 600px;
+		margin: 20px auto;
+		// centers the container;
+	}
+	h1 {
+		line-height: 1.1;
+		text-align: center;
+		color: white;
+		background: steelblue;
+		margin: 0;
+		font-weight: normal;
+		text-transform: uppercase;
+		padding: 20px 0;
+
+	}
+	#stripe{
+		background-color: white;
+		height: 30px;
+		text-align: center;
+		color: black;
+	}
+	.selected{
+		color: white;
+		background: steelblue;
+	}
+	#colorDisplay {
+		font-size: 200%;
+
+	}
+	#message {
+		display: inline-block;
+		width: 20%;
+
+	}
+	button {
+		border: none;
+		background: none;
+		text-transform: uppercase;
+		height: 100%;
+		font-weight: 700;
+		color: steelblue;
+		letter-spacing: 1px;
+		font-size: inherit;
+		transition: all 0.3s;
+	}
+	button:hover {
+
+		color: white;
+		background: steelblue;
+	}
