@@ -1,10 +1,14 @@
 var express         = require("express"),
         app         = express(),
         bodyParser  = require("body-parser"),
-        mongoose    = require("mongoose")
+        mongoose    = require("mongoose"),
+        Campground  = require("./models/campground"),
+        seedDB      = require("./seeds")
+        // Comment = require("./models/comment"),
+        // User = require("./models/user")
         
 
-
+seedDB();
 mongoose.connect("mongodb://localhost/yelp_camp");
 app.use(bodyParser.urlencoded({extended: true }));
 
@@ -14,18 +18,6 @@ app.use(bodyParser.urlencoded({extended: true }));
 //         {name: "Fancy Place", image: "http://www.guntherpublications.com/core/wp-content/uploads/2018/01/manali-girls-special-adventure-camp-himachal-pradesh-1xJtgtx-1440x810-1024x576.jpg"}
 //         ];
 app.set("view engine", "ejs");
-
-// SCHEMA Setup
-
-var campgroundSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
-    
-});
-
-var Campground = mongoose.model("Campground", campgroundSchema);
-
 // Campground.create(
 //     {
         
@@ -100,11 +92,12 @@ app.get("/campgrounds/new", function(req, res) {
 
 //SHOW        shows more info about one campground
 app.get("/campgrounds/:id", function(req, res){
-    Campground.findById(req.params.id, function(err, foundCampground){
+    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         
         if(err){
             console.log(err);
         } else{
+            console.log(foundCampground);
             res.render("show", {campground: foundCampground});
         }
     });
