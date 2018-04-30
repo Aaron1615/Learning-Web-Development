@@ -87,6 +87,9 @@ app.get("/campgrounds/new", function(req, res) {
    res.render("new.ejs"); 
 });
 
+app.get("/campgrounds/:id/newcomment", function(req, res) {
+   res.render("newcomment.ejs"); 
+});
 
 
 
